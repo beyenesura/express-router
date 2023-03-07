@@ -43,9 +43,25 @@ let fruits = [
 ]
 
 // Express Routes
+const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.send(users);
+});
 
+router.get('/:id', (req, res) => {
+    const user = users[req.params.id - 1];
+    res.send(user);
+});
 
+router.get('/', (req, res) => {
+    res.send(fruits);
+});
+
+router.get('/:id', (req, res) => {
+    const fruit = fruits[req.params.id - 1];
+    res.send(fruit);
+});
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
